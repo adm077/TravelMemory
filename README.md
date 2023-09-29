@@ -12,9 +12,9 @@ This guide provides instructions on how to deploy the TravelMemory application t
 # The TravelMemory application repository
 Steps:
 
-`Clone the TravelMemory application repository:`
+Clone the TravelMemory application repository:
 
-```git clone https://github.com/UnpredictablePrashant/TravelMemory```
+`git clone https://github.com/UnpredictablePrashant/TravelMemory`
 
 # Create an EC2 instance:
 
@@ -30,7 +30,7 @@ Once the EC2 instance is launched, you can connect to it using SSH.
 To connect using SSH, you will need to generate a key pair if you do not already have one.
 Once you have generated a key pair, you can use the following command to connect to the EC2 instance:
 
-```ssh -i <key_pair>.pem ubuntu@<instance_public_ip>```
+`ssh -i <key_pair>.pem ubuntu@<instance_public_ip>`
 Replace <key_pair> with the name of your key pair and <instance_public_ip> with the public IP address of your EC2 instance.
 
 # Install the necessary dependencies:
@@ -38,55 +38,62 @@ Replace <key_pair> with the name of your key pair and <instance_public_ip> with 
 Once you are connected to the EC2 instance, you will need to install the necessary dependencies for Node.js and nginx.
 To install Node.js:
 
-```sudo apt update && sudo apt install nodejs```
+`sudo apt update && sudo apt install nodejs`
 
 To install nginx:
-```sudo apt install nginx```
+`sudo apt install nginx`
 
 # Set up the backend server:
 
 Navigate to the backend directory:
-```cd backend```
+`cd backend`
 
 * Install the backend dependencies:
-```npm install```
+`npm install`
 
 * Update the `.env` file to incorporate your database connection details and port information:
-```DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
+ 
+ ```DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
 PORT=3000```
 
 * Start the backend server:
-```npm start```
+`npm start`
 
 # Set up the frontend server:
 
 Navigate to the frontend directory:
-```cd frontend```
+`cd frontend`
 
 * Install the frontend dependencies:
-```npm install```
+`npm install`
 
 * Build the frontend application:
-```npm run build```
+`npm run build`
 
 # Configure nginx:
 
 Create a new file called nginx.conf in the /etc/nginx/sites-available directory with the following contents:
-```server {
+```
+server {
   listen 80;
   server_name <your_custom_domain>;
 
   location / {
     proxy_pass http://localhost:3000;
   }
-}```
+}
+```
 
 Replace <your_custom_domain> with the custom domain that you want to use for your application.
 
 Enable the nginx configuration:
-```sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+
+```
+sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
 Reload nginx:
-sudo systemctl reload nginx```
+sudo systemctl reload nginx
+
+```
 
 #Set up load balancing:
 
@@ -114,14 +121,14 @@ Contributions:
 
 ## We welcome contributions to the TravelMemory application. If you have any suggestions or bug reports, please submit a pull request to the repository.
 
-"""
+
 `.env` file to work with the backend:
 
 ```
 MONGO_URI='ENTER_YOUR_URL'
 PORT=3000
 ```
-"""
+
 
 Data format to be added: 
 

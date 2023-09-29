@@ -114,12 +114,14 @@ Contributions:
 
 ## We welcome contributions to the TravelMemory application. If you have any suggestions or bug reports, please submit a pull request to the repository.
 
+"""
 `.env` file to work with the backend:
 
 ```
 MONGO_URI='ENTER_YOUR_URL'
 PORT=3000
 ```
+"""
 
 Data format to be added: 
 
